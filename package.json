@@ -1,0 +1,19 @@
+{
+  "name": "poopee",
+  "version": "1.0.0",
+  "description": "toilet finder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reem-Nosbaum/PooPee.git"
+  },
+  "author": "Reem Nosbaum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Reem-Nosbaum/PooPee/issues"
+  },
+  "homepage": "https://github.com/Reem-Nosbaum/PooPee#readme"
+}
