@@ -1,20 +1,20 @@
 var map = L.map('map')
 map.setView([0, 0], 5);
 
+
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
 }).addTo(map);
 
-navigator.geolocation .watchPosition(succsess, error)
-
+const curLocation = navigator.geolocation.watchPosition(succsess, error)
 let marker, circle, zoomed
-
 function succsess(pos) {
 
     const lat = pos.coords.latitude
     const lng = pos.coords.longitude
     const accuracy = pos.coords.accuracy
+    console.log(lat);
 
     if(marker) {
         map.removeLayer(marker)
