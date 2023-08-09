@@ -7,29 +7,38 @@
     --green: rgb(134, 239, 134);
   }
   
-.wrapper{
-    display: flex;
-    flex-direction: column;
+body{
+display: flex;
+flex-direction: column;
+height: 100vh;
 }
 
 #map{
-    height: 100vh;
+    flex-grow:1;
     width: 100vw;
+    position: relative;
+    z-index: 10;
 }
 .nav-bar{
+    z-index: 20;
+    position: relative;
     display: flex;
-    justify-content: center;
-    text-align: center;
     height: 8vh;
     background-color: var(--green);
-
+    justify-content: space-between;
 }
 
 .find-btn{
-
+    align-self:center ;
+    position: absolute;
+    bottom: -100px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 10;
 }
 
 .logo{
-    width: 55px;
-    height: 55px;
+    width: 90px;
+    height: 70px;
+
 }
