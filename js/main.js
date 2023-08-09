@@ -1,4 +1,5 @@
-let coordes;
+// using coordes and map, outside the "if" statment
+let coordes
 let map
 
 if(navigator.geolocation)
@@ -7,10 +8,8 @@ if(navigator.geolocation)
         const { longitude } = position.coords
         coordes = [latitude, longitude]
 
-        console.log(latitude, longitude);
-
-        map = L.map('map').setView(coordes, 13);
-
+        map = L.map('map').setView(coordes, 17);
+        
         L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
@@ -21,21 +20,16 @@ if(navigator.geolocation)
     })
 
 
-// Define a function that uses coordes array
-function useCoordinatesOutsideIfStatement() {
-    if (coordes) {
-        // Do something with coordes
-        console.log('Using coordes array outside if statement:', coordes);
-    } else {
-        console.log('Coordinates not available yet.');
-    }
-}
-
-
-
-
 function myLocation() {
-    console.log(coordes)
-    var marker = L.marker(coordes).addTo(map);
-    marker.bindPopup("<b>I'm right here!</b>").openPopup()
+    var myIcon = L.icon({
+        iconUrl: 'poo_em.png',
+        iconSize: [40, 40],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76],
+    });
+    
+    var marker = L.marker(coordes, {icon: myIcon}).addTo(map);
+    
+    // var marker = L.marker(coordes).addTo(map)
+    marker.bindPopup("<b>it's look like you are the toilet.. 💩💩💩!</b>").openPopup()
 }
