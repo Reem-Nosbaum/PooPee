@@ -1,10 +1,15 @@
  
 * {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    font-weight: bold;
     margin: 0;
     padding: 0;
 }
 :root {
     --green: rgb(134, 239, 134);
+    --brown: rgb(132, 80, 32);
+
   }
   
 body{
@@ -23,15 +28,20 @@ height: 100vh;
     z-index: 20;
     position: relative;
     display: flex;
-    height: 8vh;
     background-color: var(--green);
     justify-content: space-between;
 }
 
 .find-btn{
+    color: wheat;
+    background-color: var(--brown);
+    border-radius: 30px;
+    padding-inline:3px ;
+    width: 270px;
+    padding-block: 6px;
     align-self:center ;
     position: absolute;
-    bottom: -100px;
+    bottom: -65px;
     right: 50%;
     transform: translateX(50%);
     z-index: 10;
@@ -40,5 +50,4 @@ height: 100vh;
 .logo{
     width: 90px;
     height: 70px;
-
 }
