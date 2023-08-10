@@ -42,10 +42,25 @@ height: 100vh;
     padding-block: 6px;
     align-self:center ;
     position: absolute;
+    bottom: -125px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 10;
+}
+.my-location-btn{
+    color: wheat;
+    background-color: var(--brown);
+    border-radius: 30px;
+    padding-inline:3px ;
+    width: 270px;
+    padding-block: 6px;
+    align-self:center ;
+    position: absolute;
     bottom: -65px;
     right: 50%;
     transform: translateX(50%);
     z-index: 10;
+
 }
 
 .logo{
