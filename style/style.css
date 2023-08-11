@@ -1,69 +1,101 @@
- 
 * {
     font-family: 'Space Mono', monospace;
     font-size: 16px;
     font-weight: bold;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
 :root {
-    --green: rgb(134, 239, 134);
+    --whait: rgb(255, 255, 255);
     --brown: rgb(132, 80, 32);
     height: 100vh;
-
-  }
-  
-body{
-display: flex;
-flex-direction: column;
-height: 100vh;
 }
 
-#map{
-    flex-grow:1;
-    width: 100vw;
-    position: relative;
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.layout {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    z-index: 30;
+    background-color: var(--whait);
+}
+
+#map {
+    width: 100%;
+    height: 91%;
+    position: absolute;
     z-index: 10;
 }
-.nav-bar{
+
+.info-menu {
+    /* position: absolute;
+    bottom: 0;
+    border: 2px solid black; */
+}
+
+header {
+    border: 1px solid black;
     z-index: 20;
     position: relative;
     display: flex;
-    background-color: var(--green);
+    background-color: var(--whait);
     justify-content: space-between;
 }
 
-.find-btn{
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -200%;
+}
+
+.find-btn {
     color: wheat;
     background-color: var(--brown);
     border-radius: 30px;
-    padding-inline:3px ;
+    padding-inline: 3px;
     width: 270px;
     padding-block: 6px;
-    align-self:center ;
-    position: absolute;
-    bottom: -125px;
-    right: 50%;
-    transform: translateX(50%);
+    align-self: center;
     z-index: 10;
 }
-.my-location-btn{
+
+.my-location-btn {
     color: wheat;
     background-color: var(--brown);
     border-radius: 30px;
-    padding-inline:3px ;
+    padding-inline: 3px;
     width: 270px;
     padding-block: 6px;
-    align-self:center ;
-    position: absolute;
-    bottom: -65px;
-    right: 50%;
-    transform: translateX(50%);
+    align-self: center;
     z-index: 10;
-
 }
 
-.logo{
+.logo {
     width: 90px;
     height: 70px;
+}
+
+.hidden {
+    display: none;
 }

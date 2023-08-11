@@ -14,6 +14,10 @@ function GoBackToMyLocation() {
     map.setView(coords, 16);
 }
 
+function toggleFooter() {
+    const footer = document.querySelector('.footer');
+    footer.classList.toggle('hidden');
+}
 
 function toiletLocations() {
     // Clear previous markers
@@ -24,6 +28,9 @@ function toiletLocations() {
         const { coords, label } = entry;
         const marker = L.marker(coords).addTo(map);
         marker.bindPopup(label);
+        marker.on('click', () => {
+            toggleFooter(); // Toggle the footer visibility on marker click
+        });
         markers.push(marker);
     });
 
@@ -49,18 +56,20 @@ function toiletLocations() {
     }
 }
 
-
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude } = position.coords;
         const { longitude } = position.coords;
         coords = L.latLng(latitude, longitude);
 
-        map = L.map('map').setView(coords, 15);
+        map = L.map('map', { zoomControl: false }).setView(coords, 15);
         L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
+
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
     }, function () {
         alert('Could not get your position');
     });
