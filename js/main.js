@@ -14,6 +14,18 @@ function GoBackToMyLocation() {
     map.setView(coords, 16);
 }
 
+function openNavigationInWaze(coords, label) {
+
+    // Create the Waze URL with the specified latitude and longitude
+    const wazeUrl = `https://www.waze.com/ul?ll=${[coords]}&navigate=yes`;
+
+    // Open the link in a new tab or window
+    window.open(wazeUrl, '_blank');
+
+    // You can also update the link text or label to indicate that it opens navigation
+    alert(`Opening navigation to ${label} in Waze`);
+}
+
 function toggleFooter() {
     const footer = document.querySelector('.footer');
     footer.classList.toggle('hidden');

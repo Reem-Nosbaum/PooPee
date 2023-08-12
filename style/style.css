@@ -4,30 +4,29 @@
     font-weight: bold;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 :root {
     --whait: rgb(255, 255, 255);
     --brown: rgb(132, 80, 32);
     --yellow: rgb(245, 204, 1)
-    /* height: 100vh; */
 }
 
 body {
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     height: 100vh;
 }
 
 .layout {
-    position: absolute;
-    height: 100%;
+    position: relative; 
     width: 100%;
+    height: 100vh; 
 }
 
 footer {
-    display: none; /* Set the footer to initially be hidden */
+    display: none; 
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -41,8 +40,8 @@ footer {
 }
 
 #map {
-    width: 100vw;
-    height: 92vh;
+    width: 100%;
+    height: 92%; 
     position: absolute;
     z-index: 10;
 }
