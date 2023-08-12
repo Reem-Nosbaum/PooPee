@@ -14,18 +14,6 @@ function GoBackToMyLocation() {
     map.setView(coords, 16);
 }
 
-function openNavigationInWaze(coords, label) {
-
-    // Create the Waze URL with the specified latitude and longitude
-    const wazeUrl = `https://www.waze.com/ul?ll=${[coords]}&navigate=yes`;
-
-    // Open the link in a new tab or window
-    window.open(wazeUrl, '_blank');
-
-    // You can also update the link text or label to indicate that it opens navigation
-    alert(`Opening navigation to ${label} in Waze`);
-}
-
 function toggleFooter() {
     const footer = document.querySelector('.footer');
     footer.classList.toggle('hidden');
@@ -41,6 +29,12 @@ function toiletLocations() {
         marker.bindPopup(label);
         marker.on('click', () => {
             toggleFooter(); // Toggle the footer visibility on marker click
+
+            // Set up event listener for the "Directions" button click
+            const directionsButton = document.querySelector('.btn-navigation');
+            directionsButton.addEventListener('click', () => {
+                openNavigationInWaze(coords, label); // Pass the coordinates and label
+            });
         });
         markers.push(marker);
     });
@@ -85,3 +79,17 @@ if (navigator.geolocation) {
         alert('Could not get your position');
     });
 }
+
+function openNavigationInWaze(coords, label) {
+    console.log(coords);
+
+    // alert('you abuot to leav this page to waze')
+    // Create the Waze URL with the specified latitude and longitude
+    const wazeUrl = `https://www.waze.com/ul?ll=${coords[0]},${coords[1]}&navigate=yes`;
+
+    // Open the link in a new tab or window
+    window.open(wazeUrl, '_blank');
+
+}
+
+
