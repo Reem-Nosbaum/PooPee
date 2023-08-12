@@ -10,7 +10,8 @@
 :root {
     --whait: rgb(255, 255, 255);
     --brown: rgb(132, 80, 32);
-    height: 100vh;
+    --yellow: rgb(245, 204, 1)
+    /* height: 100vh; */
 }
 
 body {
@@ -48,7 +49,12 @@ footer {
 
 .info-menu {
     position: relative;
-    height: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content:space-around
 }
 
 header {
@@ -79,6 +85,23 @@ header {
     padding-block: 6px;
     align-self: center;
     z-index: 10;
+}
+
+.btn-navigation{
+    background-color: var(--yellow);
+    border-radius: 30px;
+    padding-inline: 3px;
+    width: 270px;
+    padding-block: 6px;
+
+}
+
+.btn-details{
+    background-color: var(--yellow);
+    border-radius: 30px;
+    padding-inline: 3px;
+    width: 270px;
+    padding-block: 6px;
 }
 
 .my-location-btn {
