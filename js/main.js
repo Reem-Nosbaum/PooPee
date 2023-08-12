@@ -23,7 +23,6 @@ function toiletLocations() {
     // Clear previous markers
     markers.forEach(marker => marker.removeFrom(map));
 
-    // Add new markers
     toiletArry.forEach(entry => {
         const { coords, label } = entry;
         const marker = L.marker(coords).addTo(map);
