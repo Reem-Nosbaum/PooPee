@@ -74,6 +74,7 @@ header {
     left: 50%;
     transform: translateX(-50%);
     bottom: -200%;
+    padding: 14px;
 }
 
 .find-btn {

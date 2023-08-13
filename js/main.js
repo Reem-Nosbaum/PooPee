@@ -7,6 +7,7 @@ const toiletArry = [
 ];
 let markers = [];
 
+
 function GoBackToMyLocation() {
     const myLocationMarker = L.marker(coords).addTo(map);
     myLocationMarker.bindPopup("<b>My Location</b>").openPopup();
@@ -23,20 +24,14 @@ function toiletLocations() {
     // Clear previous markers
     markers.forEach(marker => marker.removeFrom(map));
 
-    toiletArry.forEach(entry => {
-        const { coords, label } = entry;
-        const marker = L.marker(coords).addTo(map);
-        marker.bindPopup(label);
+    toiletArry.forEach(e => {
+        const marker = L.marker(e.coords).addTo(map);
+        marker.bindPopup(e.label);
         marker.on('click', () => {
             toggleFooter(); // Toggle the footer visibility on marker click
-
-            // Set up event listener for the "Directions" button click
-            const directionsButton = document.querySelector('.btn-navigation');
-            directionsButton.addEventListener('click', () => {
-                openNavigationInWaze(coords, label); // Pass the coordinates and label
-            });
         });
         markers.push(marker);
+        console.log(markers);
     });
 
     // Find nearest marker and move map to it
@@ -80,7 +75,7 @@ if (navigator.geolocation) {
     });
 }
 
-function openNavigationInWaze(coords, label) {
+function openNavigationInWaze(coords) {
     console.log(coords);
 
     // alert('you abuot to leav this page to waze')
@@ -93,3 +88,8 @@ function openNavigationInWaze(coords, label) {
 }
 
 
+    // Set up event listener for the "Directions" button click
+    // const directionsButton = document.querySelector('.btn-navigation');
+    // directionsButton.addEventListener('click', () => {
+    //     openNavigationInWaze(e.coords, e.label); // Pass the coordinates and label
+    // });
