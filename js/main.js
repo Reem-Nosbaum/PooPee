@@ -55,7 +55,6 @@ function toiletLocations() {
         }
     }
 }
-
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
         const { latitude } = position.coords;
@@ -63,7 +62,7 @@ if (navigator.geolocation) {
         coords = L.latLng(latitude, longitude);
 
         map = L.map('map', { zoomControl: false }).setView(coords, 15);
-        L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        L.tileLayer('https://cdn.lima-labs.com/{z}/{x}/{y}.png?api=demo', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
