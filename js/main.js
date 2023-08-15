@@ -29,6 +29,11 @@ function toiletLocations() {
         marker.bindPopup(e.label);
         marker.on('click', () => {
             toggleFooter(); // Toggle the footer visibility on marker click
+            // Set up event listener for the "Directions" button click
+        const directionsButton = document.querySelector('.btn-navigation');
+        directionsButton.addEventListener('click', () => {
+            openNavigationInWaze(e.coords, e.label); // Pass the coordinates and label
+        });
         });
         markers.push(marker);
         console.log(markers);
@@ -86,9 +91,3 @@ function openNavigationInWaze(coords) {
 
 }
 
-
-    // Set up event listener for the "Directions" button click
-    // const directionsButton = document.querySelector('.btn-navigation');
-    // directionsButton.addEventListener('click', () => {
-    //     openNavigationInWaze(e.coords, e.label); // Pass the coordinates and label
-    // });
