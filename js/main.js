@@ -20,7 +20,6 @@ function myLocation() {
     // Add a new My Location marker to the map
     myLocationMarker = L.marker(coords).addTo(map);
     myLocationMarker.bindPopup("<b>My Location</b>").openPopup();
-
     map.setView(coords, 16);
 }
 
@@ -39,8 +38,8 @@ function toiletLocation() {
     toiletArry.forEach((markerEl) => {
         const marker = L.marker(markerEl.coords).addTo(map).bindPopup(markerEl.label).openPopup();
         toiletMarkers.push(marker); // Store the marker in the array
-        map.setView(markerEl.coords, 16);
-
+        console.log(coords);
+        console.log(markerEl);
     });
 }
 
