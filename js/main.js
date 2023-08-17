@@ -3,12 +3,30 @@ let map;
 let toiletMarkers = []; // Array to store the toilet markers
 let myLocationMarker = null; // Variable to store the My Location marker
 
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        const { latitude } = position.coords;
+        const { longitude } = position.coords;
+        coords = L.latLng(latitude, longitude);
+
+        map = L.map('map', { zoomControl: false }).setView(coords, 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        L.control.zoom({ position: 'topright' }).addTo(map);
+
+    }, function () {
+        alert('Could not get your position');
+    });
+}
+
 const toiletArry = [
     { coords: [32.1974516, 34.8732257], label: 'renanim' },
     { coords: [32.1920517, 34.8891483], label: 'green kfer saba' },
     { coords: [32.100446, 34.8240358], label: 'Ayalon Mall' },
 ];
-
 
 function myLocation() {
     // Remove the existing My Location marker from the map
@@ -28,18 +46,7 @@ function toggleFooter() {
     footer.classList.toggle('hidden');
 }
 
-
-function toiletLocation() {
-    // Remove existing toilet markers and lines from the map
-    toiletMarkers.forEach(markerEl => map.removeLayer(markerEl));
-    toiletMarkers = []; // Clear the array
-
-    if (myLocationMarker) {
-        map.removeLayer(myLocationMarker);
-        myLocationMarker = null;
-    }
-
-    // Calculate distances and find the closest toilet
+function findClosestToilet() {
     let closestToilet = null;
     let minDistance = Infinity;
 
@@ -53,6 +60,21 @@ function toiletLocation() {
         }
     });
 
+    return closestToilet;
+}
+
+function toiletLocation() {
+    // Remove existing toilet markers and lines from the map
+    toiletMarkers.forEach(markerEl => map.removeLayer(markerEl));
+    toiletMarkers = []; // Clear the array
+
+    if (myLocationMarker) {
+        map.removeLayer(myLocationMarker);
+        myLocationMarker = null;
+    }
+
+    const closestToilet = findClosestToilet();
+
     if (closestToilet) {
         // Draw line between my location and closest toilet
         const closestLatLng = L.latLng(closestToilet.coords[0], closestToilet.coords[1]);
@@ -61,29 +83,18 @@ function toiletLocation() {
         const closestMarker = L.marker(closestToilet.coords).addTo(map).bindPopup(closestToilet.label).openPopup();
         toiletMarkers.push(closestMarker); // Store the marker in the array
         map.setView(closestToilet.coords, 13);
-        myLocationMarker = L.marker(coords).addTo(map);
-        myLocationMarker.bindPopup("<b>My Location</b>").openPopup();    
+        myLocationMarker = L.marker(coords).addTo(map).bindPopup("<b>My Location</b>").openPopup();
 
+        toggleFooter();
     }
 }
 
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-        const { latitude } = position.coords;
-        const { longitude } = position.coords;
-        coords = L.latLng(latitude, longitude);
+function navigationGoTo() {
+    const closestToilet = findClosestToilet();
 
-        map = L.map('map', { zoomControl: false }).setView(coords, 15);
-        L.tileLayer('https://cdn.lima-labs.com/{z}/{x}/{y}.png?api=demo', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-        }).addTo(map);
-
-        L.control.zoom({ position: 'topright' }).addTo(map);
-
-    }, function () {
-        alert('Could not get your position');
-    });
+    if (closestToilet) {
+        const [lat, lon] = closestToilet.coords;
+        const wazeUrl = `https://www.waze.com/ul?ll=${lat}%2C${lon}&navigate=yes`;
+        window.open(wazeUrl, '_blank');
+    }
 }
-
-
