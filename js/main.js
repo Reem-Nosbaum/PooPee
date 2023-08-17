@@ -30,17 +30,41 @@ function toggleFooter() {
 
 
 function toiletLocation() {
-    // Remove existing toilet markers from the map
+    // Remove existing toilet markers and lines from the map
     toiletMarkers.forEach(markerEl => map.removeLayer(markerEl));
     toiletMarkers = []; // Clear the array
 
-    // Add new toilet markers to the map
-    toiletArry.forEach((markerEl) => {
-        const marker = L.marker(markerEl.coords).addTo(map).bindPopup(markerEl.label).openPopup();
-        toiletMarkers.push(marker); // Store the marker in the array
-        console.log(coords);
-        console.log(markerEl);
+    if (myLocationMarker) {
+        map.removeLayer(myLocationMarker);
+        myLocationMarker = null;
+    }
+
+    // Calculate distances and find the closest toilet
+    let closestToilet = null;
+    let minDistance = Infinity;
+
+    toiletArry.forEach((toilet) => {
+        const toiletLatLng = L.latLng(toilet.coords[0], toilet.coords[1]);
+        const distance = toiletLatLng.distanceTo(coords); // Calculate distance in meters
+
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestToilet = toilet;
+        }
     });
+
+    if (closestToilet) {
+        // Draw line between my location and closest toilet
+        const closestLatLng = L.latLng(closestToilet.coords[0], closestToilet.coords[1]);
+        const line = L.polyline([coords, closestLatLng], { color: '#845020' }).addTo(map);
+
+        const closestMarker = L.marker(closestToilet.coords).addTo(map).bindPopup(closestToilet.label).openPopup();
+        toiletMarkers.push(closestMarker); // Store the marker in the array
+        map.setView(closestToilet.coords, 13);
+        myLocationMarker = L.marker(coords).addTo(map);
+        myLocationMarker.bindPopup("<b>My Location</b>").openPopup();    
+
+    }
 }
 
 if (navigator.geolocation) {
