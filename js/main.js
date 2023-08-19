@@ -33,8 +33,8 @@ const toiletArry = [
     accessibility: true,
     rating: 4.5,
     reviews: [
-      { user: "user1", rating: 5, comment: "Clean and spacious." },
-      { user: "user2", rating: 4, comment: "Good facilities." },
+      { user: "Tom", rating: 5, comment: "Clean and spacious." },
+      { user: "Ori", rating: 4, comment: "Good facilities." },
     ],
   },
   {
@@ -44,8 +44,8 @@ const toiletArry = [
     accessibility: false,
     rating: 3.2,
     reviews: [
-      { user: "user3", rating: 3, comment: "Not well-maintained." },
-      { user: "user4", rating: 4, comment: "Decent location." },
+      { user: "Eytan", rating: 3, comment: "Not well-maintained." },
+      { user: "Guy", rating: 4, comment: "Decent location." },
     ],
   },
   {
@@ -55,8 +55,8 @@ const toiletArry = [
     accessibility: true,
     rating: 4.0,
     reviews: [
-      { user: "user5", rating: 5, comment: "Modern and clean facilities." },
-      { user: "user6", rating: 3, comment: "Crowded during peak hours." },
+      { user: "Aviv", rating: 5, comment: "Modern and clean facilities." },
+      { user: "Amit", rating: 3, comment: "Crowded during peak hours." },
     ],
   },
 ];
@@ -73,7 +73,7 @@ function myLocation() {
     .addTo(map)
     .bindPopup("<b>My Location</b>")
     .openPopup();
-  map.setView(coords, 16);
+  map.setView(coords, 15);
 }
 
 function toggleFooter() {
@@ -149,10 +149,10 @@ function DetailsBtn() {
 
   if (closestToilet) {
     const details = `
-      <h2>${closestToilet.label}</h2>
+      <h2> 📍 ${closestToilet.label}</h2>
       <p>${closestToilet.details}</p>
-      <p>Accessibility: ${closestToilet.accessibility ? "Yes" : "No"}</p>
-      <p>Rating: ${closestToilet.rating}</p>
+      <p>♿️ Accessibility : ${closestToilet.accessibility ? "Yes" : "No"}</p>
+      <p> ⭐️ Rating: ${closestToilet.rating}</p>
       <h3>Reviews:</h3>
       <ul>
         ${closestToilet.reviews
