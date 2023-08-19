@@ -145,5 +145,37 @@ function navigationGoTo() {
 }
 
 function DetailsBtn() {
-  console.log(closestToilet);
+  const toiletPopup = L.popup();
+
+  if (closestToilet) {
+    const details = `
+      <h2>${closestToilet.label}</h2>
+      <p>${closestToilet.details}</p>
+      <p>Accessibility: ${closestToilet.accessibility ? "Yes" : "No"}</p>
+      <p>Rating: ${closestToilet.rating}</p>
+      <h3>Reviews:</h3>
+      <ul>
+        ${closestToilet.reviews
+          .map(
+            (review) => `
+          <li>
+            <strong>${review.user}</strong> - Rating: ${review.rating}<br>
+            ${review.comment}
+          </li>
+        `
+          )
+          .join("")}
+      </ul>
+    `;
+
+    toiletPopup
+      .setLatLng(L.latLng(closestToilet.coords[0], closestToilet.coords[1]))
+      .setContent(details)
+      .openOn(map);
+  } else {
+    toiletPopup
+      .setLatLng(coords)
+      .setContent("No toilet details available.")
+      .openOn(map);
+  }
 }
