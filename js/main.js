@@ -48,6 +48,27 @@ const toiletArry = [
     accessibility: true,
     rating: 4.0,
   },
+  {
+    coords: [32.171378, 34.837653],
+    label: "public toilets",
+    details: "Public bathroom",
+    accessibility: true,
+    rating: 3.5,
+  },
+  {
+    coords: [32.4748832, 34.93705],
+    label: "Pardes Hanna mall",
+    details: "Pardes Hanna Mall located in Pardes Hanna city",
+    accessibility: false,
+    rating: 2.5,
+  },
+  {
+    coords: [32.2645436, 34.8739786],
+    label: "American International School",
+    details: "located in Even Yehuda",
+    accessibility: true,
+    rating: 5.0,
+  },
 ];
 
 function myLocation() {
