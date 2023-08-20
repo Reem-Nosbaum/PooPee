@@ -32,10 +32,7 @@ const toiletArry = [
     details: "Rennanim Mall located in Ra'anana city",
     accessibility: true,
     rating: 4.5,
-    reviews: [
-      { user: "Tom", rating: 5, comment: "Clean and spacious." },
-      { user: "Ori", rating: 4, comment: "Good facilities." },
-    ],
+    reviews: [],
   },
   {
     coords: [32.1920517, 34.8891483],
@@ -43,10 +40,6 @@ const toiletArry = [
     details: "Green Kfer Saba Park restroom",
     accessibility: false,
     rating: 3.2,
-    reviews: [
-      { user: "Eytan", rating: 3, comment: "Not well-maintained." },
-      { user: "Guy", rating: 4, comment: "Decent location." },
-    ],
   },
   {
     coords: [32.100446, 34.8240358],
@@ -54,10 +47,6 @@ const toiletArry = [
     details: "Ayalon Mall shopping center toilet",
     accessibility: true,
     rating: 4.0,
-    reviews: [
-      { user: "Aviv", rating: 5, comment: "Modern and clean facilities." },
-      { user: "Amit", rating: 3, comment: "Crowded during peak hours." },
-    ],
   },
 ];
 
@@ -149,24 +138,11 @@ function DetailsBtn() {
 
   if (closestToilet) {
     const details = `
-      <h2> 📍 ${closestToilet.label}</h2>
-      <p>${closestToilet.details}</p>
-      <p>♿️ Accessibility : ${closestToilet.accessibility ? "Yes" : "No"}</p>
-      <p> ⭐️ Rating: ${closestToilet.rating}</p>
-      <h3>Reviews:</h3>
-      <ul>
-        ${closestToilet.reviews
-          .map(
-            (review) => `
-          <li>
-            <strong>${review.user}</strong> - Rating: ${review.rating}<br>
-            ${review.comment}
-          </li>
-        `
-          )
-          .join("")}
-      </ul>
-    `;
+    <h2> 📍 ${closestToilet.label}</h2>
+    <p>${closestToilet.details}</p>
+    <p> ♿️ Accessibility: ${closestToilet.accessibility ? "Yes" : "No"}</p>
+    <p> ⭐️ Rating: ${closestToilet.rating}</p>
+  `;
 
     toiletPopup
       .setLatLng(L.latLng(closestToilet.coords[0], closestToilet.coords[1]))
