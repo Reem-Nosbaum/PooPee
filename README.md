@@ -51,10 +51,10 @@ To run the project locally, you need to have a modern web browser and a text edi
 
 
 ## Usage
-Click the "Go to my location" button to center the map on your current location.
-Click the "Find me a toilet near me!" button to find the closest toilet to your location. The map will display a line between your location and the closest toilet.
-Click the "Directions" button to open Waze and get directions to the nearest toilet.
-Click the "Details" button to view details about the nearest toilet, including accessibility and rating.
+- Click the "Go to my location" button to center the map on your current location.
+- Click the "Find me a toilet near me!" button to find the closest toilet to your location. The map will display a line between your location and the closest toilet.
+- Click the "Directions" button to open Waze and get directions to the nearest toilet.
+- Click the "Details" button to view details about the nearest toilet, including accessibility and rating.
 
 ## Contributing
 Contributions to this project are welcome. If you find any issues or would like to enhance the application, feel free to submit a pull request. Please follow the existing coding style and guidelines.
